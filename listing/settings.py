@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'listing.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'propertylist',
         'USER': 'imma',
         'PASSWORD': '7007',
