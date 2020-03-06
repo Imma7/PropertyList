@@ -12,11 +12,15 @@ class Property (models.Model):
 
     class Meta: 
         ordering = ['-created_at'] 
+        verbose_name_plural = "Properties"
 
     def __str__(self):
         return self.property_name
 class Category (models.Model):
     category_name = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name_plural = "Categories"
 
     def __str__(self):
         return self.category_name
@@ -29,6 +33,6 @@ class Location (models.Model):
 class Image (models.Model):
     property = models.ForeignKey('Property', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='uploads/% Y/% m/% d/')
-
+    
     def __str__(self):
         return '%s - %s' % (self.property, self.image)
