@@ -79,6 +79,9 @@ DATABASES = {
         'NAME': 'propertylist',
         'USER': 'imma',
         'PASSWORD': '7007',
+        'HOST': 'localhost',
+        'PORT': '',
+
     }
 }
 
