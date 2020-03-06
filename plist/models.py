@@ -24,3 +24,7 @@ class Location (models.Model):
 
 class Image (models.Model):
     property = models.ForeignKey('Property', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='uploads/% Y/% m/% d/')
+
+    def __str__(self):
+        return '%s - %s' % (self.property, self.image)
