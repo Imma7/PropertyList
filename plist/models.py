@@ -4,12 +4,13 @@ from django.db import models
 class Property (models.Model):
     property_name = models.CharField(max_length=200)
     location = models.ForeignKey('Location', on_delete=models.CASCADE)
-    description = models.CharField(max_length=1000)
+    description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=0)
     contact = models.CharField(max_length=13)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    # Meta orders posts by created at in ascending order and verbose name plural name Property as Properties in the admin page
     class Meta: 
         ordering = ['-created_at'] 
         verbose_name_plural = "Properties"
@@ -32,6 +33,7 @@ class Location (models.Model):
 
 class Image (models.Model):
     property = models.ForeignKey('Property', on_delete=models.CASCADE)
+    # Uploads with dates saves the images in folder uploads and their respective dates
     image = models.ImageField(upload_to='uploads/% Y/% m/% d/')
     
     def __str__(self):
