@@ -1,10 +1,12 @@
 from django.db import models
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 class Property (models.Model):
     property_name = models.CharField(max_length=200)
     location = models.ForeignKey('Location', on_delete=models.CASCADE)
-    description = models.TextField(blank=True)
+    description = RichTextField(blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=0)
     contact = models.CharField(max_length=13)
     type_of_listing = models.ForeignKey('ListingType', on_delete=models.CASCADE, null=True)
