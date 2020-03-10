@@ -8,8 +8,8 @@ class ImageInline(admin.StackedInline):
 
 class PropertyAdmin(admin.ModelAdmin):
     # Model Admin field Options
-    list_display = ('property_name', 'description', 'location', 'price', 'listings', 'properties', 'created_at')
-    list_filter = ('property_name', 'location', 'price', 'listings', 'properties')
+    list_display = ('property_name', 'description', 'location', 'price', 'type_of_listing', 'type_of_property', 'created_at')
+    list_filter = ('property_name', 'location', 'price', 'type_of_listing', 'type_of_listing')
     search_fields = ('property_name',)
     inlines = [ImageInline]
     
