@@ -7,7 +7,8 @@ class Property (models.Model):
     description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=0)
     contact = models.CharField(max_length=13)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    listings = models.ForeignKey('ListingType', on_delete=models.CASCADE)
+    properties = models.ForeignKey('PropertyType', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
     # Meta orders posts by created at in ascending order and verbose name plural name Property as Properties in the admin page
@@ -17,14 +18,23 @@ class Property (models.Model):
 
     def __str__(self):
         return self.property_name
-class Category (models.Model):
-    category_name = models.CharField(max_length=100)
+class ListingType (models.Model):
+    listing_type = models.CharField(max_length=100)
 
     class Meta:
-        verbose_name_plural = "Categories"
+        verbose_name_plural = "Listing Types"
 
     def __str__(self):
-        return self.category_name
+        return self.listing_type
+
+class PropertyType (models.Model):
+    property_type = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name_plural = "Property Types"
+    
+    def __str__(self):
+        return self.property_type
 class Location (models.Model):
     location_name = models.CharField(max_length=100)
 
